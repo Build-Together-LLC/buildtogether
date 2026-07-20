@@ -154,6 +154,12 @@ fixtures = [
         "dt": "BuildTogether Settings"
     }
 ]
+fixtures = [
+    "Role",
+    "Custom DocPerm",
+    "Workspace",
+    "Salary Component"
+]
  
 # --------------- 
 
