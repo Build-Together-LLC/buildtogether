@@ -1,55 +1,22 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+.DS_Store
 *.pyc
-*.py~
-
-# Distribution / packaging
-.Python
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-tags
-MANIFEST
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Dependency directories
-node_modules/
-jspm_packages/
-
-# IDEs and editors
-.vscode/
-.vs/
-.idea/
-.kdev4/
-*.kdev4
-*.DS_Store
+*.egg-info
 *.swp
-*.comp.js
-.wnf-lang-status
+tags
+hrms/public/dist
+hrms/public/node_modules
+hrms/docs/current
+node_modules/
+dist/
+__pycache__/
+
+# build/
+.vscode
+.vs
+node_modules
 *debug.log
-
-# Helix Editor
-.helix/
-
-# Aider AI Chat
-.aider*
+hrms/docs/current
+hrms/public/frontend
+hrms/www/hrms.html
+hrms/public/roster
+hrms/www/roster.html
