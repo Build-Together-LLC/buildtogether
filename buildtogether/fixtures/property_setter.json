@@ -30,5 +30,47 @@
   "property_type": "Check",
   "row_name": null,
   "value": "1"
- }
+ },
+  {
+    "doc_type": "Bank Account",
+    "field_name": "bank",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1"
+  },
+  {
+    "doc_type": "Bank Account",
+    "field_name": "branch_code",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1"
+  },
+  {
+    "doc_type": "Bank Account",
+    "field_name": "account_type",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1"
+  },
+  {
+    "doc_type": "Employee",
+    "field_name": "last_name",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "0"
+  },
+  {
+    "doc_type": "Employee",
+    "field_name": "cell_number",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1"
+  },
+  {
+    "doc_type": "Salary Detail",
+    "field_name": "amount",
+    "property": "allow_on_submit",
+    "property_type": "Check",
+    "value": "1"
+  }
 ]
