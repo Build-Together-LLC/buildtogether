@@ -139,43 +139,32 @@ app_license = "mit"
 # Hook on document methods and events
 
 doc_events = {
-    "Employee": {
-        "validate": "buildtogether.hr.employee.validate_names",
-        "on_update": "buildtogether.hr.employee.sync_bank_account"
-    },
-    "Interview Feedback": {
-        "validate": "buildtogether.recruitment.feedback.enforce_interviewer",
-        "on_submit": "buildtogether.recruitment.feedback.sync_applicant_status"
-    }
+	"Employee": {
+		"validate": "buildtogether.hr.employee.validate_names",
+		"on_update": "buildtogether.hr.employee.sync_bank_account",
+	},
+	"Interview Feedback": {
+		"validate": "buildtogether.recruitment.feedback.enforce_interviewer",
+		"on_submit": "buildtogether.recruitment.feedback.sync_applicant_status",
+	},
 }
 
 fixtures = [
-    {
-        "dt": "BuildTogether Settings"
-    },
-    {
-        "dt": "Custom Field",
-        "filters": [["name", "in", [
-            "Employee-custom_ifsc_code",
-            "Employee-custom_bank_account",
-            "Employee-custom_biometric_id"
-        ]]]
-    },
-    {
-        "dt": "Property Setter",
-        "filters": [["doc_type", "in", ["Employee", "Bank Account", "Payroll Entry"]]]
-    },
-    {
-        "dt": "Web Form",
-        "filters": [["name", "=", "employee-onboarding"]]
-    }
+	{"dt": "BuildTogether Settings"},
+	{
+		"dt": "Custom Field",
+		"filters": [
+			[
+				"name",
+				"in",
+				["Employee-custom_ifsc_code", "Employee-custom_bank_account", "Employee-custom_biometric_id"],
+			]
+		],
+	},
+	{"dt": "Property Setter", "filters": [["doc_type", "in", ["Employee", "Bank Account", "Payroll Entry"]]]},
+	{"dt": "Web Form", "filters": [["name", "=", "employee-onboarding"]]},
 ]
-fixtures = [
-    "Role",
-    "Custom DocPerm",
-    "Workspace",
-    "Salary Component"
-]
+fixtures = ["Role", "Custom DocPerm", "Workspace", "Salary Component"]
 
 # ---------------
 
@@ -285,4 +274,3 @@ fixtures = [
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-

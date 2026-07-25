@@ -23,29 +23,28 @@ def sync_bank_account(doc, method):
 	if not (doc.bank_name and doc.bank_ac_no and doc.custom_ifsc_code):
 		frappe.throw("Bank name, account number and IFSC code are mandatory")
 
-	existing = frappe.db.get_value(
-		"Bank Account",
-		{"party_type": "Employee", "party": doc.name},
-		"name"
-	)
+	existing = frappe.db.get_value("Bank Account", {"party_type": "Employee", "party": doc.name}, "name")
 
 	if existing:
 		ba = frappe.get_doc("Bank Account", existing)
 	else:
 		ba = frappe.new_doc("Bank Account")
 
-	ba.update({
-		"party_type": "Employee",
-		"party": doc.name,
-		"account_name": doc.employee_name,
-		"bank": doc.bank_name,
-		"bank_account_no": doc.bank_ac_no,
-		"branch_code": doc.custom_ifsc_code,
-		"account_type": "Savings"
-	})
+	ba.update(
+		{
+			"party_type": "Employee",
+			"party": doc.name,
+			"account_name": doc.employee_name,
+			"bank": doc.bank_name,
+			"bank_account_no": doc.bank_ac_no,
+			"branch_code": doc.custom_ifsc_code,
+			"account_type": "Savings",
+		}
+	)
 	ba.save(ignore_permissions=True)
 
 	doc.db_set("custom_bank_account", ba.name)
+
 
 @frappe.whitelist()
 def create_bank_account(employee):
@@ -57,10 +56,6 @@ def create_bank_account(employee):
 	doc = frappe.get_doc("Employee", employee)
 	sync_bank_account(doc, "manual_api_call")
 
-	bank_account = frappe.db.get_value(
-		"Bank Account",
-		{"party_type": "Employee", "party": employee},
-		"name"
-	)
+	bank_account = frappe.db.get_value("Bank Account", {"party_type": "Employee", "party": employee}, "name")
 
 	return {"bank_account": bank_account}
