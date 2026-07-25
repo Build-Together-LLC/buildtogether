@@ -1,20 +1,17 @@
 import frappe
+from frappe import _
 
 
 @frappe.whitelist()
-def update_own_bank_details(bank, account_no, branch_code, account_type="Savings"):
+def update_own_bank_details(bank: str, account_no: str, branch_code: str, account_type: str = "Savings"):
 	"""
 	API: buildtogether/hr/self_service.py, POST
 	Lets the logged-in employee update only their own bank details.
 	"""
-	employee = frappe.db.get_value(
-		"Employee",
-		{"user_id": frappe.session.user},
-		"name"
-	)
+	employee = frappe.db.get_value("Employee", {"user_id": frappe.session.user}, "name")
 
 	if not employee:
-		frappe.throw("No Employee record linked to your account.")
+		frappe.throw(_("No Employee record linked to your account."))
 
 	doc = frappe.get_doc("Employee", employee)
 
@@ -23,10 +20,6 @@ def update_own_bank_details(bank, account_no, branch_code, account_type="Savings
 	doc.custom_ifsc_code = branch_code
 	doc.save(ignore_permissions=True)
 
-	bank_account = frappe.db.get_value(
-		"Bank Account",
-		{"party_type": "Employee", "party": employee},
-		"name"
-	)
+	bank_account = frappe.db.get_value("Bank Account", {"party_type": "Employee", "party": employee}, "name")
 
 	return {"ok": True, "bank_account": bank_account}
