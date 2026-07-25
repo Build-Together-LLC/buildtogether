@@ -1,4 +1,4 @@
-import frappe
+from frappe import _
 
 
 def validate_names(doc, method):
@@ -10,7 +10,7 @@ def validate_names(doc, method):
 	full_name = " ".join(part.strip() for part in name_parts if part and part.strip())
 
 	if not full_name:
-		frappe.throw("Employee must have at least a First Name.")
+		frappe.throw(_("Employee must have at least a First Name."))
 
 	doc.employee_name = full_name
 
@@ -21,7 +21,7 @@ def sync_bank_account(doc, method):
 	Validates mandatory fields, enforces uniqueness (party + bank_account_no).
 	"""
 	if not (doc.bank_name and doc.bank_ac_no and doc.custom_ifsc_code):
-		frappe.throw("Bank name, account number and IFSC code are mandatory")
+		frappe.throw(_("Bank name, account number and IFSC code are mandatory"))
 
 	existing = frappe.db.get_value("Bank Account", {"party_type": "Employee", "party": doc.name}, "name")
 
@@ -47,7 +47,7 @@ def sync_bank_account(doc, method):
 
 
 @frappe.whitelist()
-def create_bank_account(employee):
+def create_bank_account(employee: str):
 	"""
 	API: buildtogether/hr/employee.py, POST
 	Idempotently create/link a Bank Account for the given employee.
