@@ -176,13 +176,13 @@ fixtures = [
     "Workspace",
     "Salary Component"
 ]
- 
-# --------------- 
+
+# ---------------
 
 # scheduler_events = {
 # 	"all": [
 # 		"buildtogether.tasks.all"
-# 	], 
+# 	],
 # 	"daily": [
 # 		"buildtogether.tasks.daily"
 # 	],
