@@ -4,7 +4,7 @@ app_publisher = "aman@buildtogether.co.in"
 app_description = "This is the app customising the requirements of BuildTogether"
 app_email = "aman@buildtogether.co.in"
 app_license = "mit"
-
+required_apps = ["erpnext", "hrms"]
 # Apps
 # ------------------
 
