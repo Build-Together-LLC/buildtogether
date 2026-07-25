@@ -11,3 +11,4 @@ def sync_applicant_status(doc, method):
 	if doc.result == "Cleared":
 		frappe.db.set_value("Job Applicant", doc.job_applicant, "status", "Cleared")
 		frappe.db.set_value("Job Applicant", doc.job_applicant, "workflow_state", "Cleared")
+		

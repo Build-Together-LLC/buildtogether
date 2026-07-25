@@ -30,3 +30,4 @@ def update_own_bank_details(bank, account_no, branch_code, account_type="Savings
 	)
 
 	return {"ok": True, "bank_account": bank_account}
+	
