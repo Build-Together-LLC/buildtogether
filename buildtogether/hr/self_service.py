@@ -25,7 +25,7 @@ def update_own_bank_details(bank, account_no, branch_code, account_type="Savings
 
 	bank_account = frappe.db.get_value(
 		"Bank Account",
-		{"party_type": "Employee", "party": employee},
+		{"party_type": "Employee", "party": employee, "is_default": 1},
 		"name"
 	)
 
