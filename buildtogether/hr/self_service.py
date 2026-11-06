@@ -20,7 +20,7 @@ def update_own_bank_details(bank, account_no, branch_code, account_type="Savings
 
 	doc.bank_name = bank
 	doc.bank_ac_no = account_no
-	doc.custom_ifsc_code = branch_code
+	doc.ifsc_code = branch_code
 	doc.save(ignore_permissions=True)
 
 	bank_account = frappe.db.get_value(

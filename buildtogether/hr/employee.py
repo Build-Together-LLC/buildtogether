@@ -20,7 +20,7 @@ def sync_bank_account(doc, method):
 	Employee on_update — create/link a Bank Account from employee bank details.
 	Validates mandatory fields, enforces uniqueness (party + bank_account_no).
 	"""
-	if not (doc.bank_name and doc.bank_ac_no and doc.custom_ifsc_code):
+	if not (doc.bank_name and doc.bank_ac_no and doc.ifsc_code):
 		frappe.throw("Bank name, account number and IFSC code are mandatory")
 
 	existing = frappe.db.get_value(
@@ -40,12 +40,11 @@ def sync_bank_account(doc, method):
 		"account_name": doc.employee_name,
 		"bank": doc.bank_name,
 		"bank_account_no": doc.bank_ac_no,
-		"branch_code": doc.custom_ifsc_code,
+		"branch_code": doc.ifsc_code,
 		"account_type": "Savings" 
 	})
 	ba.save(ignore_permissions=True) 
 
-	doc.db_set("custom_bank_account", ba.name)
 
 @frappe.whitelist()
 def create_bank_account(employee):
