@@ -78,8 +78,8 @@
    "property_type": "check",
    "row_name": null,
    "value": "1"
-  }
-]
+  },
+  {
   "default_value": null,
   "doc_type": "Employee",
   "docstatus": 0,
